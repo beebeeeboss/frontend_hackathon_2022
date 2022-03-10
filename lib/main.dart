@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:project_hackathon/login.dart';
-import 'package:project_hackathon/mainHome.dart';
-import 'package:project_hackathon/register.dart';
-import 'data.dart';
+import 'package:project_hackathon/Dashboard_onwards/dashboardMain.dart';
+import 'package:project_hackathon/uptoSignIn_up/login.dart';
+import 'package:project_hackathon/uptoSignIn_up/mainHome.dart';
+import 'package:project_hackathon/uptoSignIn_up/register.dart';
+import 'uptoSignIn_up/data.dart';
 
 
 void main() {
@@ -14,7 +15,8 @@ void main() {
       "home": (context) => Home(),
       "homemain": (context) => MainHome(),
       "login": (context) => MyLogin(),
-      "register":(context) => MyRegister()
+      "register":(context) => MyRegister(),
+      "dashboardmain":(context) => DashboardMain()
     },
   ));
 }

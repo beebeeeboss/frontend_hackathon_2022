@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 
-class MyRegister extends StatefulWidget {
-  const MyRegister({Key? key}) : super(key: key);
+class MyLogin extends StatefulWidget {
+  const MyLogin({Key? key}) : super(key: key);
 
   @override
-  State<MyRegister> createState() => _MyRegisterState();
+  State<MyLogin> createState() => _MyLoginState();
 }
 
-class _MyRegisterState extends State<MyRegister> {
+class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/login.png'), fit: BoxFit.cover
-          )
+        image: DecorationImage(
+          image: AssetImage('assets/login.png'), fit: BoxFit.cover
+        )
       ),
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
@@ -28,7 +24,7 @@ class _MyRegisterState extends State<MyRegister> {
             Container(
               padding: EdgeInsets.only(left: 35, top: 130),
               child: Text(
-                'Sign Up',
+                'Welcome\nBack',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
@@ -48,41 +44,13 @@ class _MyRegisterState extends State<MyRegister> {
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
                                 filled: true,
-                                hintText: "Name",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            style: TextStyle(),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
                                 hintText: "Email",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
                           SizedBox(
-                            height: 40,
-                          ),
-                          TextField(
-                            style: TextStyle(),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Phone Number",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 40,
+                            height: 30,
                           ),
                           TextField(
                             style: TextStyle(),
@@ -102,7 +70,7 @@ class _MyRegisterState extends State<MyRegister> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign up',
+                                'Sign in',
                                 style: TextStyle(
                                     fontSize: 27, fontWeight: FontWeight.w700),
                               ),
@@ -111,7 +79,9 @@ class _MyRegisterState extends State<MyRegister> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, 'dashboardmain');
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -126,18 +96,26 @@ class _MyRegisterState extends State<MyRegister> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'login');
+                                  Navigator.pushNamed(context, 'homemain');
                                 },
                                 child: Text(
-                                  'Way to SignIn',
+                                  'Back to Home',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18),
+                                      color: Color(0xff58bee6),
+                                      fontSize: 13),
                                 ),
                                 style: ButtonStyle(),
                               ),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Forgot Password',
+                                    style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontSize: 13,
+                                    ),
+                                  )),
                             ],
                           )
                         ],
@@ -150,6 +128,6 @@ class _MyRegisterState extends State<MyRegister> {
           ],
         ),
       ),
-    );;
+    );
   }
 }
