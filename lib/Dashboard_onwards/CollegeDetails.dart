@@ -23,6 +23,58 @@ class CollegeDetails extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+            child: Column(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'homemain');
+                  },
+                  child: Text(
+                    'Back to Home',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.lightGreen,
+                        fontSize: 13),
+                  ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xFFe6fff9))
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'homemain');
+                  },
+
+                  child: Text(
+                    'Back to Home',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.lightGreen,
+                        fontSize: 13),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Color(0xFFe6fff9))
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'homemain');
+                  },
+                  child: Text(
+                    'Back to Home',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.lightGreen,
+                        fontSize: 13),
+                  ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xFFe6fff9))
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
