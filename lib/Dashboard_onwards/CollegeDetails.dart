@@ -5,6 +5,26 @@ class CollegeDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Computer Science Engineering"),
+        backgroundColor: Color(0xFF906CBA),
+      ),
+      body: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            color: Colors.red,
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: Image(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                  "assets/six.jpg"
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
