@@ -8,19 +8,21 @@ import 'package:project_hackathon/uptoSignIn_up/login.dart';
 import 'package:project_hackathon/uptoSignIn_up/mainHome.dart';
 import 'package:project_hackathon/uptoSignIn_up/register.dart';
 import 'uptoSignIn_up/data.dart';
+import 'Dashboard_onwards/CollegeDetails.dart';
 
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: "home",
+    initialRoute: "collegedetails",
     routes: {
       "home": (context) => Home(),
       "homemain": (context) => MainHome(),
       "login": (context) => MyLogin(),
       "register":(context) => MyRegister(),
       "dashboardmain":(context) => DashboardMain(),
-      "subcoursemain" : (context) => DropPage()
+      "subcoursemain" : (context) => DropPage(),
+      "collegedetails": (context) => CollegeDetails()
     },
   ));
 }

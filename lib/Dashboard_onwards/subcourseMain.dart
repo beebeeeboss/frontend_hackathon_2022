@@ -23,7 +23,7 @@ class DropdownPage extends StatefulWidget {
 
 class _DropdownPageState extends State<DropdownPage> {
 
-  String dropdownValue = 'CSE';
+  String dropdownValue = 'Computer Science';
   @override
   Widget build(BuildContext context) {
     return  Column(
@@ -54,7 +54,7 @@ class _DropdownPageState extends State<DropdownPage> {
                 dropdownValue = newValue!;
               });
             },
-            items: <String>['CSE', 'CIVIL', 'three', 'Four']
+            items: <String>['Computer Science', 'Civil', 'Automobile', 'Biotechnology', 'Electrical', 'Mechanical', 'Electronics' , 'Aeronautical']
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -98,26 +98,31 @@ class _DropdownPageState extends State<DropdownPage> {
               Container(
                 margin: EdgeInsets.all(20.0),
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.3,
-                color: Colors.red,
+                height: MediaQuery.of(context).size.height * 0.4,
+                color: Colors.blueAccent,
                 child: Image(
                   fit: BoxFit.fill,
                   image: AssetImage(
-                    "assets/background.jpg"
+                    "assets/six.jpg"
                   ),
                 ),
               ),
               Container(
+                alignment: Alignment.center,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('CSE',
+                    Text('Computer Science Engineering',
                     style: TextStyle(
-                      fontSize: 60.0,
+                      fontSize: 25.0,
                       fontWeight: FontWeight.bold
                     ),
                     ),
-                    Text("Total number of Colleges")
+                    Text("Total number of Colleges:- 2349",
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold
+                      ),
+                    )
                   ],
                 ),
               )
