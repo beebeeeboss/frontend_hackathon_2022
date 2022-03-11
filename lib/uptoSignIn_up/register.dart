@@ -172,7 +172,7 @@ class _MyRegisterState extends State<MyRegister> {
   void signup() async{
     if(_name.isNotEmpty && _password.isNotEmpty && _email.isNotEmpty && _phoneNo.isNotEmpty){
       http.Response response = await http.post(
-          Uri.parse('http://127.0.0.1:8000/signup'),
+          Uri.parse('https://hackathon22.herokuapp.com/signup'),
           body: <String , String>{
             'name' : _name ,
             'email' : _email ,

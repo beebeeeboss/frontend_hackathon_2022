@@ -14,7 +14,7 @@ import 'Dashboard_onwards/CollegeDetails.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: "collegedetails",
+    initialRoute: "homemain",
     routes: {
       "home": (context) => Home(),
       "homemain": (context) => MainHome(),

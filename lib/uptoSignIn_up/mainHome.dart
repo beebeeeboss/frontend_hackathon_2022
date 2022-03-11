@@ -10,7 +10,7 @@ class MainHome extends StatefulWidget {
 
 class _MainHomeState extends State<MainHome> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context ) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
