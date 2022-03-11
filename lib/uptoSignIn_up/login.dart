@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 class MyLogin extends StatefulWidget {
@@ -132,5 +134,35 @@ class _MyLoginState extends State<MyLogin> {
         ),
       ),
     );
+  }
+
+  void signin() async{
+    if(_email.isNotEmpty && _password.isNotEmpty){
+      http.Response response = await http.post(
+          Uri.parse('http://127.0.0.1:8000/signin'),
+          body: <String , String>{
+          'email' : _email ,
+          'password' : _password ,
+          }
+      );
+
+      if(response.body == 'true'){
+        Navigator.pushNamed(context, 'dashboardmain');
+      }
+      else{
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Email or Password error"),
+          ),
+        );
+      }
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Please Fill all the fields"),
+        ),
+      );
+    }
   }
 }
