@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 class MyLogin extends StatefulWidget {
@@ -107,9 +105,8 @@ class _MyLoginState extends State<MyLogin> {
                                   'Back to Home',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18),
+                                      color: Color(0xff58bee6),
+                                      fontSize: 13),
                                 ),
                                 style: ButtonStyle(),
                               ),
@@ -118,9 +115,8 @@ class _MyLoginState extends State<MyLogin> {
                                   child: Text(
                                     'Forgot Password',
                                     style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18,
+                                      color: Colors.redAccent,
+                                      fontSize: 13,
                                     ),
                                   )),
                             ],
@@ -136,28 +132,5 @@ class _MyLoginState extends State<MyLogin> {
         ),
       ),
     );
-  }
-
-  void signin() async{
-    if(_email.isNotEmpty && _password.isNotEmpty){
-      http.Response response = await http.post(
-          Uri.parse('http://127.0.0.1:8000/signin'),
-          body: <String , String>{
-            'email' : _email ,
-            'password' : _password
-          }
-      );
-
-      if(response.body == 'true'){
-
-      }
-      else{
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Email or Password error"),
-          ),
-        );
-      }
-    }
   }
 }
