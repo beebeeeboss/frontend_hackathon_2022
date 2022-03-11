@@ -1,4 +1,9 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'user.dart';
+import 'package:http/http.dart' as http;
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -8,6 +13,8 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+
+  String _name = '' , _email = '' , _phoneNo = '' , _password = '';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,6 +59,7 @@ class _MyRegisterState extends State<MyRegister> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                            onChanged: (text) => _name = text,
                           ),
                           SizedBox(
                             height: 30,
@@ -66,6 +74,7 @@ class _MyRegisterState extends State<MyRegister> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                              onChanged: (text) => _email = text,
                           ),
                           SizedBox(
                             height: 40,
@@ -73,6 +82,7 @@ class _MyRegisterState extends State<MyRegister> {
                           TextField(
                             style: TextStyle(),
                             obscureText: true,
+                            maxLength: 10,
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
                                 filled: true,
@@ -80,6 +90,7 @@ class _MyRegisterState extends State<MyRegister> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                              onChanged: (text) => _phoneNo = text,
                           ),
                           SizedBox(
                             height: 40,
@@ -94,6 +105,7 @@ class _MyRegisterState extends State<MyRegister> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                              onChanged: (text) => _password = text ,
                           ),
                           SizedBox(
                             height: 40,
@@ -111,7 +123,9 @@ class _MyRegisterState extends State<MyRegister> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      signup();
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -151,5 +165,36 @@ class _MyRegisterState extends State<MyRegister> {
         ),
       ),
     );;
+  }
+
+  void signup() async{
+    if(_name.isNotEmpty && _password.isNotEmpty && _email.isNotEmpty && _phoneNo.isNotEmpty){
+       http.Response response = await http.post(
+            Uri.parse('http://127.0.0.1:8000/signup'),
+            body: <String , String>{
+              'name' : _name ,
+              'email' : _email ,
+              'phoneNo' : _phoneNo ,
+              'password' : _password
+            }
+        );
+       if(response.body == 'ok'){
+         //go to dashboard
+       }
+       else{
+         ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(
+             content: Text("Something Went Wrong."),
+           ),
+         );
+       }
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Please Fill all the fields"),
+          ),
+      );
+    }
   }
 }

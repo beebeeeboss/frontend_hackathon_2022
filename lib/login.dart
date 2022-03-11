@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
 
@@ -8,6 +10,7 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  String _email = '' , _password = '';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,6 +51,7 @@ class _MyLoginState extends State<MyLogin> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                            onChanged: (text) => _email = text,
                           ),
                           SizedBox(
                             height: 30,
@@ -62,6 +66,7 @@ class _MyLoginState extends State<MyLogin> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                            onChanged: (text) => _password = text,
                           ),
                           SizedBox(
                             height: 40,
@@ -79,7 +84,9 @@ class _MyLoginState extends State<MyLogin> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      signin();
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -129,5 +136,28 @@ class _MyLoginState extends State<MyLogin> {
         ),
       ),
     );
+  }
+
+  void signin() async{
+    if(_email.isNotEmpty && _password.isNotEmpty){
+      http.Response response = await http.post(
+          Uri.parse('http://127.0.0.1:8000/signin'),
+          body: <String , String>{
+            'email' : _email ,
+            'password' : _password
+          }
+      );
+
+      if(response.body == 'true'){
+
+      }
+      else{
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Email or Password error"),
+          ),
+        );
+      }
+    }
   }
 }
