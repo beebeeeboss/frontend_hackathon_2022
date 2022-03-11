@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CourseTile extends StatelessWidget {
-  CourseTile({required this.text, required this.image});
-  String text,image;
+  CourseTile({required this.text,required this.text2, required this.image});
+  String text,image,text2;
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +13,25 @@ class CourseTile extends StatelessWidget {
         width: 1000,
         padding: EdgeInsets.all(10.0),
 
-        child: Text(text,
-          style: TextStyle(
-              fontSize: 50,
-              color: Colors.white
-          ),) ,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+            Text(text,
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+
+              ),
+            ),
+             Icon(Icons.double_arrow_outlined,
+               size: 70,
+               color: Colors.white,
+             ),
+
+          ],
+        ) ,
         decoration: BoxDecoration(
           color: Color(0xff0b0f14),
           image: DecorationImage(
