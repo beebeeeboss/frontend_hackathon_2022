@@ -24,97 +24,101 @@ class _DashboardMainState extends State<DashboardMain> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 210.0,
-              padding: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                  color: Color(0xFF58bee6),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(100.0),
-                  bottomRight: Radius.circular(100.0),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x9F00000F),
-                    offset: const Offset(
-                      5.0,
-                      5.0,
-                    ),
-                    blurRadius: 20.0,
-                    spreadRadius: 1.0,
-                  ), //BoxShadow
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: const Offset(0.0, 0.0),
-                    blurRadius: 0.0,
-                    spreadRadius: 0.0,
-                  ), //BoxShadow
+      body: Column(
+        children: [
+          Container(
+            height: 210.0,
+            padding: EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+                color: Color(0xFF58bee6),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(100.0),
+                bottomRight: Radius.circular(100.0),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x9F00000F),
+                  offset: const Offset(
+                    5.0,
+                    5.0,
+                  ),
+                  blurRadius: 20.0,
+                  spreadRadius: 1.0,
+                ), //BoxShadow
+                BoxShadow(
+                  color: Colors.white,
+                  offset: const Offset(0.0, 0.0),
+                  blurRadius: 0.0,
+                  spreadRadius: 0.0,
+                ), //BoxShadow
+              ],
+            ),
+            child: Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Hi Chahat!',
+                            style: TextStyle(
+                              fontFamily: 'Rubik',
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Find College via Course',
+                            style: TextStyle(
+                              fontFamily: 'Rubik',
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )
+                        ],
+                      ),
+                      //CircleAvatar(
+                      //  radius: 32,
+                       // backgroundColor: Colors.white,
+                       // child: CircleAvatar(
+                        //  radius: 30,
+                       //   backgroundImage: AssetImage('assets/one.png'),
+                        //),
+                     // ),
+                    ],
+                  ),
+                  Positioned(
+                   top: 120.0,
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: SearchCourse())
                 ],
               ),
-              child: Stack(
-                alignment: AlignmentDirectional.bottomCenter,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Hi Chahat!',
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Find College via Course',
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            )
-                          ],
-                        ),
-                        //CircleAvatar(
-                        //  radius: 32,
-                         // backgroundColor: Colors.white,
-                         // child: CircleAvatar(
-                          //  radius: 30,
-                         //   backgroundImage: AssetImage('assets/one.png'),
-                          //),
-                       // ),
-                      ],
-                    ),
-                    Positioned(
-                     top: 120.0,
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: SearchCourse())
-                  ],
-                ),
-              ),
-
-            SizedBox(
-              height: 5.0,
             ),
-            Container(
-              child: Column(
-                children: getAllTiles(),
-              ),
-            )
-          ],
-        ),
+
+          SizedBox(
+            height: 5.0,
+          ),
+          Container(
+            child: Flexible(
+              child: ListView.builder(
+                  itemBuilder: (context, index) {
+                     return _getTile(index: index);
+                  },
+                   itemCount: list.length,
+
+                  ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -127,19 +131,19 @@ class _DashboardMainState extends State<DashboardMain> {
       });
   }
 
-  List<GestureDetector> getAllTiles(){
-    List<GestureDetector> iList = [];
-    //for(var jsonObject in list){
-      iList.add(
-          GestureDetector(
-              child:CourseTile(text: 'CSE', text2: 'B.tech',  image: "assets/background2.jpg"),
+  GestureDetector _getTile({index : int}){
+   // List<GestureDetector> iList = [];
+
+      //iList.add(
+       return   GestureDetector(
+              child:CourseTile(text: list[index]['name'], text2: list[index]['degree'],  image: "assets/background2.jpg"),
               onTap:(){
                 Navigator.pushNamed(context, 'subcoursemain');
               }
-          )
-      );
+          );
+      //);
     //}
-    return iList;
+
   }
 }
 
