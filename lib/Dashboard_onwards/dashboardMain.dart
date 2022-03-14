@@ -99,7 +99,7 @@ class _DashboardMainState extends State<DashboardMain> {
                   Positioned(
                    top: 120.0,
                       width: MediaQuery.of(context).size.width * 0.7,
-                      child: SearchCourse())
+                      child: SearchCourse(changeTilesAccordingToSearchedText))
                 ],
               ),
             ),
@@ -145,103 +145,22 @@ class _DashboardMainState extends State<DashboardMain> {
     //}
 
   }
+
+  void changeTilesAccordingToSearchedText(String text){
+    if(text.isNotEmpty) {
+      List<dynamic> newList = [];
+       for (var jsonObject in list){
+         if(jsonObject['name'].toString().contains(text))
+           newList.add(jsonObject);
+       }
+
+       setState(() {
+         list = newList;
+       });
+    }
+    else{
+      fetchData();
+    }
+  }
 }
-
-
-
-
-
-// [
-// GestureDetector(
-// child:CourseTile(text: "Engineering", text2: "hii",  image: "assets/background2.jpg"),
-// onTap:(){
-// Navigator.pushNamed(context, 'subcoursemain');
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Management", text2: "hii", image: "assets/background2.jpg"),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Commerce" , text2: "hii", image: "assets/background2.jpg"),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Arts" , text2: "hii", image: "assets/background2.jpg"),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Medical" , text2: "hii", image: "assets/background2.jpg"),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Design" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Science" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Pharmacy" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Pera medical" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Computer Application" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Agriculture" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Animation" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Architecture" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Hotel Management" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Mass Communication" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Law" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Dental" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// ),
-// GestureDetector(
-// child:CourseTile(text: "Vocational Courses" , text2: "hii", image: "assets/background2.jpg",),
-// onTap:(){
-// }
-// )
-// ],
 
