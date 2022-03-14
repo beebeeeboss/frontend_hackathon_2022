@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:ui';
 
 class MainHome extends StatefulWidget {
   const MainHome({Key? key}) : super(key: key);
@@ -28,6 +28,14 @@ class _MainHomeState extends State<MainHome> {
               children: <Widget>[
                 Text(
                   "Welcome",
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "to",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+                ),
+                Text(
+                  "Uni-Verse",
                   style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 ),
                 Text(

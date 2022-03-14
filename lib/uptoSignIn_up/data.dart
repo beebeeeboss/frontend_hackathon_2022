@@ -42,24 +42,24 @@ List<SliderModel> getSlides(){
   SliderModel sliderModel = new SliderModel(imageAssetPath: "", title: "", desc: "");
 
   //1
-  sliderModel.setDesc("vgdngbhj nckm vgbhjkmldc hbjdc");
-  sliderModel.setTitle("Sleep");
+  sliderModel.setDesc("Search from Over 2000+ courses");
+  sliderModel.setTitle("Courses");
   sliderModel.setImageAssetPath("assets/one.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel(imageAssetPath: "", title: "", desc: "");
 
   //2
-  sliderModel.setDesc("gvbhjdksbhjkml;sjhbkmldskjmls,;d");
-  sliderModel.setTitle("Code");
+  sliderModel.setDesc("Compare over 1000+ Universities");
+  sliderModel.setTitle("Universities");
   sliderModel.setImageAssetPath("assets/two.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel(imageAssetPath: "", title: "", desc: "");
 
   //3
-  sliderModel.setDesc("tfghwjdkscghbjkm ld,cvgbhjdkmlcgvbhjckml");
-  sliderModel.setTitle("Repeat");
+  sliderModel.setDesc("Comparision on basis of NAAC, NIRF and NBA Ranking");
+  sliderModel.setTitle("Rankings");
   sliderModel.setImageAssetPath("assets/three.png");
   slides.add(sliderModel);
 
