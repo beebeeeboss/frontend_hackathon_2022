@@ -30,42 +30,44 @@ class _DropdownPageState extends State<DropdownPage> {
     return  SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            width: 1000,
-            margin: EdgeInsets.all(15.0),
-            padding: EdgeInsets.all(3.0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color(0xFF58bee6)
-              )
-            ),
-            child: DropdownButton<String>(
+          Center(
+            child: Container(
+              width: 1000,
+              margin: EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(3.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color(0xFF58bee6)
+                )
+              ),
+              child: DropdownButton<String>(
 
-            value: dropdownValue,
-            icon: const Icon(Icons.arrow_downward),
-            elevation: 16,
-            style: const TextStyle(color: Color(0xFF58bee6)),
-            underline: Container(
-              height: 2,
-              color: Colors.blue,
+              value: dropdownValue,
+              icon: const Icon(Icons.arrow_downward),
+              elevation: 16,
+              style: const TextStyle(color: Color(0xFF58bee6)),
+              underline: Container(
+                height: 2,
+                color: Colors.blue,
+              ),
+              hint:Text("Select Subcourse"),
+              isExpanded: true,
+              onChanged: (String? newValue) {
+                setState(() {
+                  _isVisible = true;
+                  dropdownValue = newValue!;
+                });
+              },
+              items: <String>['Computer Science', 'Civil', 'Automobile', 'Biotechnology', 'Electrical', 'Mechanical', 'Electronics' , 'Aeronautical']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
-            hint:Text("Select Subcourse"),
-            isExpanded: true,
-            onChanged: (String? newValue) {
-              setState(() {
-                _isVisible = true;
-                dropdownValue = newValue!;
-              });
-            },
-            items: <String>['Computer Science', 'Civil', 'Automobile', 'Biotechnology', 'Electrical', 'Mechanical', 'Electronics' , 'Aeronautical']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
         ),
+          ),
         Visibility(
           visible: _isVisible,
           child: GestureDetector(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class MyRegister extends StatefulWidget {
 
 class _MyRegisterState extends State<MyRegister> {
   String _name = '' , _email = '' , _phoneNo = '' , _password = '';
-
+  bool _isLoading = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -171,6 +173,8 @@ class _MyRegisterState extends State<MyRegister> {
 
   void signup() async{
     if(_name.isNotEmpty && _password.isNotEmpty && _email.isNotEmpty && _phoneNo.isNotEmpty){
+      if(_isLoading)
+      Navigator.pushNamed(context, 'loadingcircle');
       http.Response response = await http.post(
           Uri.parse('https://hackathon22.herokuapp.com/signup'),
           body: <String , String>{
@@ -180,6 +184,9 @@ class _MyRegisterState extends State<MyRegister> {
             'password' : _password
           }
       );
+      setState(() {
+        _isLoading = false;
+      });
       if(response.body == 'ok'){
         //go to dashboard
         Navigator.pushNamed(context, 'login');

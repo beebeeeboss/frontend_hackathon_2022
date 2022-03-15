@@ -10,6 +10,8 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+
+  bool _isLoading = true;
   String _email = '' , _password = '';
   @override
   Widget build(BuildContext context) {
@@ -137,6 +139,8 @@ class _MyLoginState extends State<MyLogin> {
   }
 
   void signin() async{
+    if(_isLoading)
+      Navigator.pushNamed(context, 'loadingcircle');
     if(_email.isNotEmpty && _password.isNotEmpty){
       http.Response response = await http.post(
           Uri.parse('https://hackathon22.herokuapp.com/signin'),
@@ -145,9 +149,12 @@ class _MyLoginState extends State<MyLogin> {
           'password' : _password ,
           }
       );
+      setState(() {
+        _isLoading = false;
+      });
 
       if(response.body == 'true'){
-        Navigator.pushNamed(context, 'dashboardmain');
+        Navigator.pushNamedAndRemoveUntil(context, 'dashboardmain', ModalRoute.withName('dashboardmain'));
       }
       else{
         ScaffoldMessenger.of(context).showSnackBar(

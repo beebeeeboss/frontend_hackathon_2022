@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_hackathon/Dashboard_onwards/dashboardMain.dart';
 import 'package:project_hackathon/Dashboard_onwards/subcourseMain.dart';
 import 'package:project_hackathon/SplashScreen.dart';
+import 'package:project_hackathon/loadingOnWards/LoadingCircle.dart';
 import 'package:project_hackathon/uptoSignIn_up/login.dart';
 import 'package:project_hackathon/uptoSignIn_up/mainHome.dart';
 import 'package:project_hackathon/uptoSignIn_up/register.dart';
@@ -23,7 +24,8 @@ void main() {
       "register":(context) => MyRegister(),
       "dashboardmain":(context) => DashboardMain(),
       "subcoursemain" : (context) => DropPage(),
-      "collegedetails": (context) => CollegeDetails()
+      "collegedetails": (context) => CollegeDetails(),
+      "loadingcircle" : (context)=>LoadingCircle(),
     },
   ));
 }
