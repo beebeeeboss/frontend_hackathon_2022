@@ -27,18 +27,19 @@ class _DropdownPageState extends State<DropdownPage> {
   String dropdownValue = 'Computer Science';
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      children: [
-        Container(
-          width: 1000,
-          margin: EdgeInsets.all(15.0),
-          padding: EdgeInsets.all(3.0),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Color(0xFF58bee6)
-            )
-          ),
-          child: DropdownButton<String>(
+    return  SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            width: 1000,
+            margin: EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(3.0),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Color(0xFF58bee6)
+              )
+            ),
+            child: DropdownButton<String>(
 
             value: dropdownValue,
             icon: const Icon(Icons.arrow_downward),
