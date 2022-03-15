@@ -45,7 +45,7 @@ class _CollegeDetailsState extends State<CollegeDetails> {
           ),
           Container(
             child: Column(
-              crossAxisAlignment:CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
                 CheckboxListTile(
@@ -87,23 +87,21 @@ class _CollegeDetailsState extends State<CollegeDetails> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  child: Flexible(
-                    child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        return _getTile(index: index);
-                      },
-                      itemCount: list2.length,
-
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
+                
               ],
             ),
-          )
+          ),
+          Container(
+            child: Flexible(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return _getTile(index: index ,context: context);
+                },
+                itemCount: list2.length,
+
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -122,26 +120,22 @@ void fetchData() async{
   //});
 }
 
-GestureDetector _getTile({index : int , context : BuildContext}){
-  return GestureDetector(
-    child: TextButton(
-      onPressed: () {
+TextButton _getTile({index : int , context : BuildContext}){
+  return TextButton(
+    onPressed: () {
 
-      },
-      child: Text(
-        list2[index]['link'],
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: Colors.lightGreen,
-            fontSize: 13),
-      ),
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Color(0xFFe6fff9)),
-      ),
-    ),
-    onTap: (){
-      Navigator.pushNamed(context, 'subcoursemain');
     },
+    child: Text(
+      list2[index]['link'],
+      textAlign: TextAlign.center,
+      style: TextStyle(
+          color: Colors.lightGreen,
+          fontSize: 13),
+    ),
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Color(0xFFe6fff9)),
+
+    ),
   );
 }
 }

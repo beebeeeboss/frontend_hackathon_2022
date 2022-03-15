@@ -141,6 +141,6 @@ class _DropdownPageState extends State<DropdownPage> {
           ),
         )
       ],
-    );
+    ));
   }
 }
