@@ -13,11 +13,11 @@ class DashboardMain extends StatefulWidget {
 
 class _DashboardMainState extends State<DashboardMain> {
   List<dynamic> list = [];
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
     fetchData();
   }
   @override
@@ -64,7 +64,7 @@ class _DashboardMainState extends State<DashboardMain> {
                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Hi Chahat!',
+                            'Hi Student!',
                             style: TextStyle(
                               fontFamily: 'Rubik',
                               color: Colors.white,
@@ -124,9 +124,12 @@ class _DashboardMainState extends State<DashboardMain> {
   }
 
   void fetchData() async{
+
+
     http.Response response = await http.get(Uri.parse('https://hackathon22.herokuapp.com/getall'));
 
     setState(() {
+
         list = jsonDecode(response.body);
       });
   }
