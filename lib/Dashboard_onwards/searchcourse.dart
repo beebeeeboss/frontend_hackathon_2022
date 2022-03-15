@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SearchCourse extends StatelessWidget {
-  const SearchCourse({Key? key}) : super(key: key);
+
+  Function changeTilesAccordingToSearchedText;
+
+  SearchCourse(this.changeTilesAccordingToSearchedText);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +21,14 @@ class SearchCourse extends StatelessWidget {
               hintText: 'Search...',
               border: InputBorder.none,
             ),
+            onChanged: (text) =>{
+              changeTilesAccordingToSearchedText(text)
+            },
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+
+            },
             icon: Icon(Icons.close),
           ),
         ),
