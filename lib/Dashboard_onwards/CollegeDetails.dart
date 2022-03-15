@@ -52,28 +52,28 @@ class _CollegeDetailsState extends State<CollegeDetails> {
                   title: Text("NBA Evaluation"),
                   activeColor: Colors.red,
                   checkColor: Colors.red,
-                  value: value3,
+                  value: value,
                   onChanged: (newValue3) {
                     setState(() {
-                      value3 = newValue3!;
+                      value = newValue3!;
                     });
                   },
                   controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
                 ),
                 CheckboxListTile(
-                  title: Text("NBA Evaluation"),
+                  title: Text("NAAC Evaluation"),
                   activeColor: Colors.red,
                   checkColor: Colors.red,
-                  value: value3,
+                  value: value2,
                   onChanged: (newValue3) {
                     setState(() {
-                      value3 = newValue3!;
+                      value2 = newValue3!;
                     });
                   },
                   controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
                 ),
                 CheckboxListTile(
-                  title: Text("NBA Evaluation"),
+                  title: Text("NIRF Evaluation"),
                   activeColor: Colors.red,
                   checkColor: Colors.red,
                   value: value3,

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_hackathon/Dashboard_onwards/dashboardMain.dart';
 import 'package:project_hackathon/Dashboard_onwards/subcourseMain.dart';
+import 'package:project_hackathon/SplashScreen.dart';
 import 'package:project_hackathon/uptoSignIn_up/login.dart';
 import 'package:project_hackathon/uptoSignIn_up/mainHome.dart';
 import 'package:project_hackathon/uptoSignIn_up/register.dart';
@@ -13,8 +14,9 @@ import 'Dashboard_onwards/CollegeDetails.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: "home",
+    initialRoute: "splashscreen",
     routes: {
+      "splashscreen":(context) => Splasho(),
       "home": (context) => Home(),
       "homemain": (context) => MainHome(),
       "login": (context) => MyLogin(),

@@ -13,7 +13,7 @@ class DashboardMain extends StatefulWidget {
 
 class _DashboardMainState extends State<DashboardMain> {
   List<dynamic> list = [];
-
+  List<dynamic> filteredList = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -123,12 +123,15 @@ class _DashboardMainState extends State<DashboardMain> {
     );
   }
 
-  void fetchData() async{
-    http.Response response = await http.get(Uri.parse('https://hackathon22.herokuapp.com/getall'));
+  void fetchData() async {
+    http.Response response = await http.get(
+        Uri.parse('https://hackathon22.herokuapp.com/getall'));
+
+
 
     setState(() {
-        list = jsonDecode(response.body);
-      });
+      list = jsonDecode(response.body);
+    });
   }
 
   GestureDetector _getTile({index : int}){
@@ -139,12 +142,13 @@ class _DashboardMainState extends State<DashboardMain> {
       //);
     //}
     return   GestureDetector(
-        child:CourseTile(text: list[index]['name'], text2: list[index]['degree'],  image: "assets/background2.jpg"),
+        child:CourseTile(text: list[index]['degree'], text2: list[index]['degree'],  image: "assets/background2.jpg"),
       onTap: (){
         Navigator.pushNamed(context, 'subcoursemain');
       },
     );
-  }
+    }
+
 
   void changeTilesAccordingToSearchedText(String text){
     if(text.isNotEmpty) {
