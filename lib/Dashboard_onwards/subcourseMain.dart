@@ -69,7 +69,7 @@ class _DropdownPageState extends State<DropdownPage> {
           Visibility(
             visible: _isVisible,
             child: Container(
-              width: 1000,
+              width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/background2.jpg"),
