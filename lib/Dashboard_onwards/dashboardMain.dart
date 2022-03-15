@@ -135,15 +135,15 @@ class _DashboardMainState extends State<DashboardMain> {
    // List<GestureDetector> iList = [];
 
       //iList.add(
-       return   GestureDetector(
-              child:CourseTile(text: list[index]['name'], text2: list[index]['degree'],  image: "assets/background2.jpg"),
-              onTap:(){
-                Navigator.pushNamed(context, 'subcoursemain');
-              }
-          );
+
       //);
     //}
-
+    return   GestureDetector(
+        child:CourseTile(text: list[index]['name'], text2: list[index]['degree'],  image: "assets/background2.jpg"),
+      onTap: (){
+        Navigator.pushNamed(context, 'subcoursemain');
+      },
+    );
   }
 }
 

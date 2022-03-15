@@ -20,7 +20,7 @@ class CourseTile extends StatelessWidget {
 
             Text(text,
               style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 20,
                   color: Colors.white,
 
               ),
