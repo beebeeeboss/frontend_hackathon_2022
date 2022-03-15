@@ -18,6 +18,7 @@ class _MainHomeState extends State<MainHome> {
           )
       ),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Center(
