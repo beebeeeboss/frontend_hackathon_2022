@@ -1,9 +1,8 @@
-
-
+// @dart=2.9
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:project_hackathon/Dashboard_onwards/dashboardMain.dart';
 import 'package:project_hackathon/Dashboard_onwards/subcourseMain.dart';
-import 'package:project_hackathon/SplashScreen.dart';
 import 'package:project_hackathon/loadingOnWards/LoadingCircle.dart';
 import 'package:project_hackathon/uptoSignIn_up/login.dart';
 import 'package:project_hackathon/uptoSignIn_up/mainHome.dart';
@@ -11,37 +10,60 @@ import 'package:project_hackathon/uptoSignIn_up/register.dart';
 import 'uptoSignIn_up/data.dart';
 import 'Dashboard_onwards/CollegeDetails.dart';
 
-
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: "splashscreen",
+    initialRoute: "home",
     routes: {
-      "splashscreen":(context) => Splasho(),
       "home": (context) => Home(),
       "homemain": (context) => MainHome(),
       "login": (context) => MyLogin(),
-      "register":(context) => MyRegister(),
-      "dashboardmain":(context) => DashboardMain(),
-      "subcoursemain" : (context) => DropPage(),
+      "register": (context) => MyRegister(),
+      "dashboardmain": (context) => DashboardMain(),
+      "subcoursemain": (context) => DropPage(),
       "collegedetails": (context) => CollegeDetails(),
-      "loadingcircle" : (context)=>LoadingCircle(),
+      "loadingcircle": (context) => LoadingCircle(),
     },
+    home: MyHomePage(),
   ));
 }
 
+
+class MyHomePage extends StatefulWidget {
+  @override
+  SplashScreenState createState() => SplashScreenState();
+}
+class SplashScreenState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 7),
+            ()=>Navigator.pushReplacement(context,
+            MaterialPageRoute(builder:
+                (context) => Home()
+            )
+        )
+    );
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Color(0xFF58bee6),
+        child:FlutterLogo(size:MediaQuery.of(context).size.height)
+    );
+  }
+}
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
   List<SliderModel> mySLides = <SliderModel>[];
   int slideIndex = 0;
-  late PageController controller ;
+  PageController controller;
 
-  Widget _buildPageIndicator(bool isCurrentPage){
+  Widget _buildPageIndicator(bool isCurrentPage) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 2.0),
       height: isCurrentPage ? 10.0 : 6.0,
@@ -97,54 +119,69 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        bottomSheet: slideIndex != 2 ? Container(
-          margin: EdgeInsets.symmetric(vertical: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              FlatButton(
-                onPressed: (){
-                  controller.animateToPage(2, duration: Duration(milliseconds: 400), curve: Curves.linear);
-                },
-                splashColor: Colors.blue[50],
-                child: Text(
-                  "SKIP",
-                  style: TextStyle(color: Color(0xFF0074E4), fontWeight: FontWeight.w600),
-                ),
-              ),
-              Container(
+        bottomSheet: slideIndex != 2
+            ? Container(
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Row(
-                  children: [
-                    for (int i = 0; i < 3 ; i++) i == slideIndex ? _buildPageIndicator(true): _buildPageIndicator(false),
-                  ],),
-              ),
-              FlatButton(
-                onPressed: (){
-                  print("this is slideIndex: $slideIndex");
-                  controller.animateToPage(slideIndex + 1, duration: Duration(milliseconds: 500), curve: Curves.linear);
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    FlatButton(
+                      onPressed: () {
+                        controller.animateToPage(2,
+                            duration: Duration(milliseconds: 400),
+                            curve: Curves.linear);
+                      },
+                      splashColor: Colors.blue[50],
+                      child: Text(
+                        "SKIP",
+                        style: TextStyle(
+                            color: Color(0xFF0074E4),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          for (int i = 0; i < 3; i++)
+                            i == slideIndex
+                                ? _buildPageIndicator(true)
+                                : _buildPageIndicator(false),
+                        ],
+                      ),
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        print("this is slideIndex: $slideIndex");
+                        controller.animateToPage(slideIndex + 1,
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.linear);
+                      },
+                      splashColor: Colors.blue[50],
+                      child: Text(
+                        "NEXT",
+                        style: TextStyle(
+                            color: Color(0xFF0074E4),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, 'homemain');
                 },
-                splashColor: Colors.blue[50],
-                child: Text(
-                  "NEXT",
-                  style: TextStyle(color: Color(0xFF0074E4), fontWeight: FontWeight.w600),
+                child: Container(
+                  height: 60,
+                  color: Colors.blue,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "GET STARTED NOW",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
-            ],
-          ),
-        ): InkWell(
-          onTap: (){
-            Navigator.pushNamed(context, 'homemain');
-          },
-          child: Container(
-            height: 60,
-            color: Colors.blue,
-            alignment: Alignment.center,
-            child: Text(
-              "GET STARTED NOW",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-            ),
-          ),
-        ),
       ),
     );
   }
@@ -153,7 +190,7 @@ class _HomeState extends State<Home> {
 class SlideTile extends StatelessWidget {
   String imagePath, title, desc;
 
-  SlideTile({ required this.imagePath, required this.title,required  this.desc});
+  SlideTile({ this.imagePath, this.title, this.desc});
 
   @override
   Widget build(BuildContext context) {
@@ -163,26 +200,27 @@ class SlideTile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset(imagePath,
-          height: 300,
-          width: 300,),
+          Image.asset(
+            imagePath,
+            height: 300,
+            width: 300,
+          ),
           SizedBox(
             height: 40,
           ),
-          Text(title, textAlign: TextAlign.center,style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20
-          ),),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+          ),
           SizedBox(
             height: 20,
           ),
-          Text(desc, textAlign: TextAlign.center,style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 14))
+          Text(desc,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14))
         ],
       ),
     );
   }
 }
-
-
